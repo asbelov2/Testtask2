@@ -20,7 +20,9 @@ class RecordsView extends Component {
           <Tab name="Месяц" changeTab={this.changeTab}/>
           <Tab name="Все" changeTab={this.changeTab}/>
         </div>
-        
+        <div className="recrdsview-records">
+
+        </div>
       </div>
     );
   }
