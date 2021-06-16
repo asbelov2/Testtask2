@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AddForm from '../AddForm/AddForm';
+import RecordForm from '../RecordForm/RecordForm';
 import RecordsView from '../RecordsView/RecordsView';
 
 import './Container.css';
@@ -9,7 +9,7 @@ class Container extends Component {
     return (
       <div className="container" id="container">
         <RecordsView/>
-        <AddForm/>
+        <RecordForm/>
       </div>
     );
   }

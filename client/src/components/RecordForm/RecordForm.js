@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import ReactModal from 'react-modal';
 import DataInputs from './DataInputs/DataInputs';
 
-import './AddForm.css';
+import './RecordForm.css';
 
-class AddForm extends Component {
+class RecordForm extends Component {
   constructor () {
     super();
     this.state = {
@@ -27,21 +27,21 @@ class AddForm extends Component {
   render() {
     return (
       <div>
-        <button className="addform__button" onClick={this.handleOpenModal}>Add record</button>
+        <input className="addform__button" type="button" value={this.props.name?this.props.name:"Добавить"} onClick={this.handleOpenModal}/>
         <ReactModal 
           className="addform"
           ariaHideApp={false}
           isOpen={this.state.showModal}
           contentLabel="Add new record"
         >
-          <form>
+          <form onSubmit={this.props.onRecordSubmit}>
             <p>Тип события</p>
             <p><input className="addrecord__radio" id="meeting" type="radio" name="type" value="meeting" onClick={this.changeRecordType.bind(this)}/>Встреча</p>
             <p><input className="addrecord__radio" id="business" type="radio" name="type" value="business" onClick={this.changeRecordType.bind(this)}/>Дело</p>
             <p><input className="addrecord__radio" id="reminder" type="radio" name="type" value="reminder" onClick={this.changeRecordType.bind(this)}/>Памятка</p>
             <DataInputs recordtype={this.state.recordtype}/>
             <input type="submit" value="Создать событие"/>
-            <button className="addform__button" onClick={this.handleCloseModal}>Close</button>
+            <input className="addform__button" type="button" value="close" onClick={this.handleCloseModal}/>
           </form>
 
         </ReactModal>
@@ -56,4 +56,4 @@ class AddForm extends Component {
   }
 }
 
-export default AddForm;
+export default RecordForm;

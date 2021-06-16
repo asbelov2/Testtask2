@@ -4,34 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require("cors");
-var mysql = require("mysql2");
+var pgp = require("pg-promise")(/*options*/);
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var APIRouter = require('./routes/API');
-
-const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "Tee!96BK"
-});
-
-// тестирование подключения
-connection.connect(function(err){
-  if (err) {
-    return console.error("Ошибка: " + err.message);
-  }
-  else{
-    console.log("Подключение к серверу MySQL успешно установлено");
-  }
-});
-// закрытие подключения
-connection.end(function(err) {
-if (err) {
-  return console.log("Ошибка: " + err.message);
-}
-console.log("Подключение закрыто");
-});
 
 var app = express();
 
@@ -46,8 +21,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use("/API", APIRouter);
 
 // catch 404 and forward to error handler

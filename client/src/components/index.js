@@ -1,8 +1,8 @@
 import Container from './Container/Container'
-import AddForm from './AddForm/AddForm'
+import RecordForm from './RecordForm/RecordForm'
 import RecordsView from './RecordsView/RecordsView'
 export {
   Container,
-  AddForm,
+  RecordForm,
   RecordsView
 };
